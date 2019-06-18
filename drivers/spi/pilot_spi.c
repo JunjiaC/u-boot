@@ -441,7 +441,7 @@ static int pilot_spi_xfer(struct udevice *dev, unsigned int bitlen,
 		dev_get_parent_platdata(dev);
 	debug("SHIVAH: %s bitlen %d flags %d\n", __func__, bitlen, flags);
 	int byte = bitlen/8;
-	unsigned int bmisc_val = *((volatile unsigned int *) priv->regs->BMisc);
+	unsigned int bmisc_val = priv->regs->BMisc;
 	
 	if(((bmisc_val & 0x1000000) == 0x1000000) && (priv->SPI3B4B_strap != 0x40))
 	{
